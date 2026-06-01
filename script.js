@@ -12,14 +12,33 @@ window.addEventListener("scroll", () => {
 const hamburger = document.getElementById("hamburger");
 const navLinks = document.getElementById("navLinks");
 
+function setMenuOpen(isOpen) {
+  if (isOpen) {
+    navLinks.classList.add("active");
+    hamburger.setAttribute("aria-expanded", "true");
+  } else {
+    navLinks.classList.remove("active");
+    hamburger.setAttribute("aria-expanded", "false");
+  }
+}
+
 hamburger.addEventListener("click", () => {
-  navLinks.classList.toggle("active");
+  const isOpen = navLinks.classList.contains("active");
+  setMenuOpen(!isOpen);
 });
 
-// Close mobile menu when clicking a link
+// Allow closing with Escape when menu is open
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && navLinks.classList.contains("active")) {
+    setMenuOpen(false);
+    hamburger.focus();
+  }
+});
+
+// Close mobile menu when clicking a link and update aria state
 document.querySelectorAll(".nav-links a").forEach((link) => {
   link.addEventListener("click", () => {
-    navLinks.classList.remove("active");
+    setMenuOpen(false);
   });
 });
 
