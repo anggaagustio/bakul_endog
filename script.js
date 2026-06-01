@@ -16,9 +16,11 @@ function setMenuOpen(isOpen) {
   if (isOpen) {
     navLinks.classList.add("active");
     hamburger.setAttribute("aria-expanded", "true");
+    hamburger.classList.add("open");
   } else {
     navLinks.classList.remove("active");
     hamburger.setAttribute("aria-expanded", "false");
+    hamburger.classList.remove("open");
   }
 }
 
