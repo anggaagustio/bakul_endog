@@ -12,15 +12,36 @@ window.addEventListener("scroll", () => {
 const hamburger = document.getElementById("hamburger");
 const navLinks = document.getElementById("navLinks");
 
+// Create backdrop element for mobile menu (dark overlay)
+let navBackdrop = document.getElementById("nav-backdrop");
+if (!navBackdrop) {
+  navBackdrop = document.createElement("div");
+  navBackdrop.id = "nav-backdrop";
+  navBackdrop.className = "nav-backdrop";
+  document.body.appendChild(navBackdrop);
+}
+
+navBackdrop.addEventListener("click", () => {
+  setMenuOpen(false);
+});
+
 function setMenuOpen(isOpen) {
   if (isOpen) {
     navLinks.classList.add("active");
     hamburger.setAttribute("aria-expanded", "true");
     hamburger.classList.add("open");
+    navBackdrop.classList.add("active");
+    // lock scrolling when menu is open
+    document.documentElement.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
   } else {
     navLinks.classList.remove("active");
     hamburger.setAttribute("aria-expanded", "false");
     hamburger.classList.remove("open");
+    navBackdrop.classList.remove("active");
+    // restore scrolling
+    document.documentElement.style.overflow = "";
+    document.body.style.overflow = "";
   }
 }
 
@@ -189,3 +210,102 @@ fetch("footer.html")
   .then((data) => {
     document.getElementById("footer-placeholder").innerHTML = data;
   });
+
+// ===== THEME TOGGLE (dark/light) =====
+const themeToggle = document.getElementById("themeToggle");
+function applyTheme(t) {
+  if (t === "dark") {
+    document.documentElement.classList.add("dark");
+    themeToggle.setAttribute("aria-pressed", "true");
+    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+  } else {
+    document.documentElement.classList.remove("dark");
+    themeToggle.setAttribute("aria-pressed", "false");
+    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+  }
+}
+
+const savedTheme = localStorage.getItem("theme");
+if (savedTheme) {
+  applyTheme(savedTheme);
+} else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+  applyTheme("dark");
+}
+
+themeToggle.addEventListener("click", () => {
+  const isDark = document.documentElement.classList.contains("dark");
+  const next = isDark ? "light" : "dark";
+  applyTheme(next);
+  localStorage.setItem("theme", next);
+});
+
+// ===== NAV FOCUS TRAP & STAGGERED ITEMS =====
+let navKeyHandler = null;
+function enableNavFocusTrap(enable) {
+  const focusable = Array.from(navLinks.querySelectorAll("a, button"));
+  if (enable) {
+    // focus first link
+    if (focusable.length) focusable[0].focus();
+    navKeyHandler = function (e) {
+      if (e.key === "Tab") {
+        const idx = focusable.indexOf(document.activeElement);
+        if (e.shiftKey && idx === 0) {
+          e.preventDefault();
+          focusable[focusable.length - 1].focus();
+        } else if (!e.shiftKey && idx === focusable.length - 1) {
+          e.preventDefault();
+          focusable[0].focus();
+        }
+      }
+    };
+    document.addEventListener("keydown", navKeyHandler);
+  } else {
+    if (navKeyHandler) document.removeEventListener("keydown", navKeyHandler);
+    navKeyHandler = null;
+  }
+}
+
+// Stagger nav items when opening
+function applyNavStagger(open) {
+  const items = navLinks.querySelectorAll("li");
+  items.forEach((li, i) => {
+    if (open) {
+      li.style.transitionDelay = `${i * 70}ms`;
+      li.classList.add("nav-item-enter");
+    } else {
+      li.style.transitionDelay = "";
+      li.classList.remove("nav-item-enter");
+    }
+  });
+}
+
+// Update setMenuOpen to enable focus trap & stagger
+const originalSetMenuOpen = setMenuOpen;
+setMenuOpen = function (isOpen) {
+  originalSetMenuOpen(isOpen);
+  enableNavFocusTrap(isOpen);
+  applyNavStagger(isOpen);
+};
+
+// ===== FETCH PRICES (static JSON) =====
+fetch("prices.json")
+  .then((r) => r.json())
+  .then((data) => {
+    Object.entries(data).forEach(([key, value]) => {
+      const el = document.querySelector(`[data-price-key="${key}"]`);
+      if (el) el.textContent = value;
+    });
+  })
+  .catch(() => {
+    // ignore fetch errors (site still works offline)
+  });
+
+// Small UX: move focus to contact form when floating-order clicked
+const floatingOrder = document.querySelector(".floating-order");
+if (floatingOrder) {
+  floatingOrder.addEventListener("click", (e) => {
+    // default anchor to #contact; ensure focus on name input
+    const nameInput = document.getElementById("name");
+    setTimeout(() => nameInput && nameInput.focus(), 500);
+  });
+}

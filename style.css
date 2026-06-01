@@ -1,14 +1,15 @@
 :root {
-  --primary: #1a1a2e;
-  --secondary: #16213e;
-  --accent: #e94560;
-  --accent-hover: #c73e54;
-  --gold: #d4a017;
-  --light: #f8f9fa;
-  --dark: #0f0f23;
-  --text: #333;
-  --text-light: #666;
-  --white: #fff;
+  --primary: #0b1724; /* deep navy for text */
+  --secondary: #122432; /* dark blue background accents */
+  --egg: #6fc062; /* hijau telur bebek (light) */
+  --accent: #238a3b; /* primary green accent (darker) */
+  --accent-hover: #1e6f31;
+  --gold: #238a3b;
+  --light: #f7f9fb;
+  --dark: #0f1720;
+  --text: #0b1724;
+  --text-light: #52606a;
+  --white: #ffffff;
   --transition: all 0.3s ease;
 }
 
@@ -37,10 +38,19 @@ body {
 }
 
 .navbar.scrolled {
-  background: rgba(26, 26, 46, 0.95);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  background: var(--white);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 6px 24px rgba(11, 23, 36, 0.08);
   padding: 10px 0;
+}
+
+/* When navbar becomes solid, switch link/logo colors for contrast */
+.navbar.scrolled .logo {
+  color: var(--primary);
+}
+
+.navbar.scrolled .nav-links a {
+  color: var(--primary);
 }
 
 .nav-container {
@@ -65,6 +75,25 @@ body {
 .logo i {
   color: var(--accent);
 }
+
+.logo-img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  display: inline-block;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  background: transparent;
+  border: none;
+  color: var(--white);
+  font-size: 1.05rem;
+  cursor: pointer;
+  margin-left: 12px;
+}
+
+/* (dark theme removed to keep single high-contrast palette) */
 
 .nav-links {
   display: flex;
@@ -116,7 +145,7 @@ body {
 
 .hamburger:focus {
   outline: none;
-  box-shadow: 0 0 0 4px rgba(233, 69, 96, 0.12);
+  box-shadow: 0 0 0 4px rgba(127, 207, 107, 0.12);
   border-radius: 8px;
 }
 
@@ -164,7 +193,7 @@ body {
 .hero {
   min-height: 100vh;
   background:
-    linear-gradient(135deg, rgba(26, 26, 46, 0.9) 0%, rgba(22, 33, 62, 0.85) 100%),
+    linear-gradient(135deg, rgba(3, 8, 12, 0.72) 0%, rgba(3, 8, 12, 0.6) 100%),
     url("img/img6.jpg") center/cover;
   display: flex;
   align-items: center;
@@ -182,7 +211,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background: rgba(3, 8, 12, 0.28);
 }
 
 .hero-content {
@@ -195,9 +224,9 @@ body {
 
 .hero-badge {
   display: inline-block;
-  background: rgba(233, 69, 96, 0.2);
-  border: 1px solid var(--accent);
-  color: var(--accent);
+  background: rgba(127, 207, 107, 0.12);
+  border: 1px solid var(--egg);
+  color: var(--egg);
   padding: 8px 20px;
   border-radius: 50px;
   font-size: 0.85rem;
@@ -215,12 +244,12 @@ body {
 }
 
 .hero h1 span {
-  color: var(--accent);
+  color: var(--egg);
 }
 
 .hero p {
   font-size: 1.15rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.94);
   margin-bottom: 35px;
   max-width: 600px;
   margin-left: auto;
@@ -296,13 +325,13 @@ body {
 .btn-primary {
   background: var(--accent);
   color: var(--white);
-  box-shadow: 0 10px 30px rgba(233, 69, 96, 0.3);
+  box-shadow: 0 8px 22px rgba(35, 138, 59, 0.12);
 }
 
 .btn-primary:hover {
   background: var(--accent-hover);
   transform: translateY(-3px);
-  box-shadow: 0 15px 40px rgba(233, 69, 96, 0.4);
+  box-shadow: 0 18px 44px rgba(35, 138, 59, 0.16);
 }
 
 .btn-outline {
@@ -511,7 +540,7 @@ section {
 .feature-icon {
   width: 70px;
   height: 70px;
-  background: linear-gradient(135deg, var(--accent), #ff6b81);
+  background: linear-gradient(135deg, var(--egg), var(--accent));
   border-radius: 20px;
   display: flex;
   align-items: center;
@@ -519,7 +548,7 @@ section {
   margin: 0 auto 25px;
   font-size: 1.8rem;
   color: var(--white);
-  box-shadow: 0 10px 30px rgba(233, 69, 96, 0.3);
+  box-shadow: 0 10px 30px rgba(127, 207, 107, 0.12);
 }
 
 .feature-card h3 {
@@ -610,7 +639,7 @@ section {
 .price-card:hover {
   transform: translateY(-5px);
   background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(233, 69, 96, 0.3);
+  border-color: rgba(127, 207, 107, 0.3);
 }
 
 .price-card.featured {
@@ -757,15 +786,15 @@ section {
 }
 
 .contact-item i {
-  width: 50px;
-  height: 50px;
+  width: 44px;
+  height: 44px;
   background: var(--accent);
   color: var(--white);
-  border-radius: 12px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
+  font-size: 1.05rem;
 }
 
 .contact-item div h4 {
@@ -814,7 +843,7 @@ section {
 .form-group textarea:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 4px rgba(233, 69, 96, 0.1);
+  box-shadow: 0 0 0 4px rgba(127, 207, 107, 0.1);
 }
 
 .form-group textarea {
@@ -839,10 +868,10 @@ section {
 .footer-brand h3 {
   font-size: 1.5rem;
   font-weight: 800;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .footer-brand h3 i {
@@ -850,9 +879,81 @@ section {
 }
 
 .footer-brand p {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 0.9rem;
-  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.footer-logo {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  display: inline-block;
+  background: #ffffff;
+  padding: 6px;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(3, 30, 12, 0.08);
+}
+
+/* Dark mode: override color variables when html has .dark */
+html.dark {
+  --primary: #e6f5e6; /* light text */
+  --white: #071013; /* page background in dark mode */
+  --text: #e6f5e6; /* main text color */
+  --text-light: rgba(230, 245, 230, 0.75);
+  --light: #081512;
+  --dark: #071013;
+  --accent: #2aa24a; /* slightly brighter green for dark bg */
+  --egg: #66c05a;
+}
+
+/* Some dark-specific element tweaks */
+html.dark {
+  /* only override semantic variables used for colors */
+  --bg: #071013; /* page background */
+  --text: #e6f5e6; /* main text on dark */
+  --text-light: rgba(230, 245, 230, 0.78);
+  --accent: #2aa24a; /* brighter accent on dark */
+  --egg: #66c05a;
+  /* card / UI surfaces for dark mode */
+  --card-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02));
+  --card-border: rgba(255, 255, 255, 0.06);
+  --price-highlight: var(--egg);
+}
+
+/* Apply page background and text color from variables */
+html.dark body {
+  background: var(--bg);
+  color: var(--text);
+}
+html.dark .navbar {
+  background: rgba(7, 17, 14, 0.6);
+}
+html.dark .nav-links a {
+  color: var(--text);
+}
+html.dark .btn-outline {
+  color: var(--text);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+html.dark .footer {
+  background: #03110b;
+  color: var(--text);
+}
+
+/* Improve price list contrast in dark mode */
+html.dark .products .price-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(6px);
+}
+html.dark .products .price-card:hover {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.025));
+  border-color: rgba(127, 207, 107, 0.22);
+}
+html.dark .products .price-card .price-value {
+  color: var(--price-highlight);
+  font-weight: 800;
 }
 
 .footer-links h4 {
@@ -973,6 +1074,7 @@ section {
     align-items: center;
     gap: 30px;
     transition: var(--transition);
+    z-index: 1002;
   }
 
   .nav-links.active {
@@ -981,6 +1083,101 @@ section {
 
   .hamburger {
     display: flex;
+  }
+
+  /* Mobile nav item stagger */
+  .nav-links li {
+    opacity: 0;
+    transform: translateX(24px);
+    transition:
+      opacity 300ms ease,
+      transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .nav-links.active li.nav-item-enter {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Dark overlay behind mobile nav when open */
+  .nav-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
+    z-index: 1000;
+  }
+
+  .nav-backdrop.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Nav item stagger animations */
+  .nav-links li {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Floating order CTA */
+  .floating-order {
+    position: fixed;
+    right: 28px;
+    bottom: 120px;
+    background: #ffffff;
+    color: var(--accent);
+    padding: 10px 14px;
+    border-radius: 999px;
+    box-shadow: 0 8px 30px rgba(7, 29, 15, 0.08);
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+    z-index: 1001;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transform: translateZ(0);
+    transition:
+      transform 180ms ease,
+      box-shadow 180ms ease,
+      opacity 180ms ease;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .floating-order i {
+    font-size: 1.05rem;
+    display: inline-grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 10px;
+  }
+
+  .floating-order:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 40px rgba(7, 29, 15, 0.22);
+  }
+
+  /* Ensure WA doesn't overlap */
+  .floating-wa {
+    bottom: 40px;
+    right: 40px;
+  }
+
+  /* Mobile: compact CTA */
+  @media (max-width: 480px) {
+    .floating-order {
+      right: 16px;
+      bottom: 110px;
+      padding: 8px 10px;
+    }
+    .floating-order span {
+      display: none;
+    }
   }
 
   .hero h1 {

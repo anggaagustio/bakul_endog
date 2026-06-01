@@ -15,9 +15,14 @@
     <nav class="navbar" id="navbar">
       <div class="nav-container">
         <a href="#" class="logo">
-          <i class="fas fa-egg"></i>
+          <img src="img/logo-laatansa.webp" srcset="img/logo-laatansa.webp 1x" alt="Laa Tansa Farm" class="logo-img" width="56" height="56" />
           Laa Tansa Farm
         </a>
+        
+        <button id="themeToggle" class="theme-toggle" aria-pressed="false" aria-label="Toggle theme">
+          <i class="fas fa-sun"></i>
+        </button>
+
         <ul class="nav-links" id="navLinks">
           <li><a href="#home">Beranda</a></li>
           <li><a href="#about">Tentang</a></li>
@@ -26,6 +31,7 @@
           <li><a href="#gallery">Galeri</a></li>
           <li><a href="#contact">Kontak</a></li>
         </ul>
+
         <button class="hamburger" id="hamburger" type="button" aria-label="Toggle navigation" aria-controls="navLinks" aria-expanded="false">
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
@@ -37,14 +43,14 @@
     <!-- HERO SECTION -->
     <section class="hero" id="home">
       <div class="hero-content">
-        <div class="hero-badge">Sejak 2020</div>
-        <h1>Supplier Telur <span>Terpercaya</span> Magelang</h1>
-        <p>Laa Tansa Farm adalah supplier telur terkemuka yang melayani pengiriman ke seluruh Indonesia dengan kualitas terbaik dan harga kompetitif.</p>
+        <div class="hero-badge">Sejak 2025</div>
+        <h1>Peternakan Telur Bebek <span>Terpercaya</span> Magelang</h1>
+        <p>Laa Tansa Farm adalah Peternakan telur bebek fresh langsung dari kandang. Kami melayani pengiriman ke seluruh Indonesia dengan kualitas terbaik dan harga kompetitif.</p>
         <div class="hero-buttons">
           <a href="#products" class="btn btn-primary"> <i class="fas fa-tag"></i> Lihat Harga </a>
           <a href="#contact" class="btn btn-outline"> <i class="fas fa-phone"></i> Hubungi Kami </a>
         </div>
-        <div class="hero-stats">
+        <!-- <div class="hero-stats">
           <div class="stat-item">
             <div class="stat-number" data-target="27">0</div>
             <div class="stat-label">Tahun Pengalaman</div>
@@ -56,7 +62,7 @@
           <div class="stat-item">
             <div class="stat-number" data-target="1">0</div>
             <div class="stat-label">Provinsi Terlayani</div>
-          </div>
+          </div> -->
         </div>
       </div>
     </section>
@@ -66,12 +72,12 @@
       <div class="container">
         <div class="about-grid animate-on-scroll">
           <div class="about-image">
-            <img src="img/img6.jpg" alt="Laa Tansa Farm Warehouse" />
+            <img src="img/img6.jpg" alt="Laa Tansa Farm Warehouse" loading="lazy" />
           </div>
           <div class="about-content">
             <h3>Profil Singkat Laa Tansa Farm</h3>
             <p>
-              Laa Tansa Farm adalah nama usaha jual beli telur bebek berkualitas yang diawali sejak tahun 2020 sampai sekarang. Melayani supplier
+              Laa Tansa Farm adalah nama usaha peternakan telur bebek berkualitas yang diawali sejak tahun 2020 sampai sekarang. Melayani supplier
               telur bebek ke seluruh Magelang dan sekitarnya, serta pengiriman ke seluruh Indonesia. Kami menyediakan telur bebek berkualitas tinggi
               dengan harga yang kompetitif, serta layanan pengiriman yang cepat dan terpercaya. Dengan pengalaman lebih dari 6 tahun,
             </p>
@@ -151,38 +157,38 @@
           <div class="price-card animate-on-scroll">
             <div class="price-icon">🥚</div>
             <h3>Telur Negeri / Horn</h3>
-            <div class="price-value">Rp 27.000</div>
+            <div class="price-value" data-price-key="telur_negeri">Rp 27.000</div>
             <div class="price-unit">/ Kg</div>
           </div>
           <div class="price-card animate-on-scroll">
             <div class="price-icon">🥚</div>
             <h3>Telur Puyuh</h3>
-            <div class="price-value">Rp 30.500</div>
+            <div class="price-value" data-price-key="telur_puyuh">Rp 30.500</div>
             <div class="price-unit">/ Kg</div>
           </div>
           <div class="price-card animate-on-scroll featured">
             <div class="price-badge">POPULER</div>
             <div class="price-icon">🥚</div>
             <h3>Telur Kampung Biasa</h3>
-            <div class="price-value">Rp 1.900</div>
+            <div class="price-value" data-price-key="telur_kampung_biasa">Rp 1.900</div>
             <div class="price-unit">/ Butir</div>
           </div>
           <div class="price-card animate-on-scroll">
             <div class="price-icon">🥚</div>
             <h3>Telur Kampung Orange</h3>
-            <div class="price-value">Rp 2.000</div>
+            <div class="price-value" data-price-key="telur_kampung_orange">Rp 2.000</div>
             <div class="price-unit">/ Butir</div>
           </div>
           <div class="price-card animate-on-scroll">
             <div class="price-icon">🥚</div>
             <h3>Telur Bebek Tawar</h3>
-            <div class="price-value">Rp 2.400</div>
+            <div class="price-value" data-price-key="telur_bebek_tawar">Rp 2.400</div>
             <div class="price-unit">/ Butir</div>
           </div>
           <div class="price-card animate-on-scroll">
             <div class="price-icon">🥚</div>
             <h3>Telur Bebek Asin</h3>
-            <div class="price-value">Rp 2.650</div>
+            <div class="price-value" data-price-key="telur_bebek_asin">Rp 2.650</div>
             <div class="price-unit">/ Butir</div>
           </div>
         </div>
@@ -199,31 +205,31 @@
         </div>
         <div class="gallery-grid">
           <div class="gallery-item wide animate-on-scroll">
-            <img src="img/img1.jpg" alt="Tim Laa Tansa Farm" />
+            <img src="img/img1.jpg" alt="Tim Laa Tansa Farm" loading="lazy" />
             <div class="gallery-overlay">
               <span>Tim Laa Tansa Farm</span>
             </div>
           </div>
           <div class="gallery-item animate-on-scroll">
-            <img src="img/img5.jpg" alt="Gudang Telur" />
+            <img src="img/img5.jpg" alt="Gudang Telur" loading="lazy" />
             <div class="gallery-overlay">
               <span>Fasilitas Gudang</span>
             </div>
           </div>
           <div class="gallery-item animate-on-scroll">
-            <img src="img/img1.jpg" alt="Proses Sortir" />
+            <img src="img/img1.jpg" alt="Proses Sortir" loading="lazy" />
             <div class="gallery-overlay">
               <span>Proses Sortir Telur</span>
             </div>
           </div>
           <div class="gallery-item animate-on-scroll">
-            <img src="img/img2.jpg" alt="Pengemasan" />
+            <img src="img/img2.jpg" alt="Pengemasan" loading="lazy" />
             <div class="gallery-overlay">
               <span>Pengemasan Telur</span>
             </div>
           </div>
           <div class="gallery-item animate-on-scroll">
-            <img src="img/img4.jpg" alt="Kantor" />
+            <img src="img/img4.jpg" alt="Kantor" loading="lazy" />
             <div class="gallery-overlay">
               <span>Kantor Laa Tansa Mart</span>
             </div>
@@ -231,7 +237,11 @@
         </div>
       </div>
       <a href="https://wa.me//085117080755?text=halo%20saya%20mau%20pesan%20telur%20bebeknya" class="floating-wa" target="_blank">
-          <img src="img/wa.webp" alt="WhatsApp">
+          <img src="img/wa.webp" alt="WhatsApp" loading="lazy">
+      </a>
+      <a href="#contact" class="floating-order" title="Pesan Sekarang">
+        <i class="fas fa-shopping-basket"></i>
+        <span>Pesan</span>
       </a>
     </section>
 
