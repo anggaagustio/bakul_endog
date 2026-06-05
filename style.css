@@ -175,7 +175,7 @@ body {
   left: 8px;
   right: 8px;
   height: 3px;
-  background: var(--white);
+  background: var(--text);
   display: block;
   border-radius: 2px;
   transition:
