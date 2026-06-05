@@ -1161,6 +1161,10 @@ html.dark .products .price-card h3 {
     z-index: 1002;
   }
 
+  html.dark .nav-links {
+    background: #03110b;
+  }
+
   .nav-links.active {
     right: 0;
   }
