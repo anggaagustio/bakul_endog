@@ -1,8 +1,6 @@
 {
-  "telur_negeri": "Rp 27.000",
-  "telur_puyuh": "Rp 30.500",
-  "telur_kampung_biasa": "Rp 1.900",
-  "telur_kampung_orange": "Rp 2.000",
-  "telur_bebek_tawar": "Rp 2.400",
-  "telur_bebek_asin": "Rp 2.650"
+  "telur_bebek_kecil": "Rp 1.800",
+  "telur_bebek_sedang": "Rp 2.100",
+  "telur_bebek_besar": "Rp 2.300",
+  "telur_bebek_jumbo": "Rp 2.500"
 }

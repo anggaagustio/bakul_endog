@@ -1,0 +1,20 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="eggBody" x1="73" y1="32" x2="183" y2="220" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#DFF7D6" />
+      <stop offset="0.45" stop-color="#7FD36B" />
+      <stop offset="1" stop-color="#2F8F3D" />
+    </linearGradient>
+    <radialGradient id="eggHighlight" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(95 80) rotate(58) scale(74 44)">
+      <stop stop-color="#FFFFFF" stop-opacity="0.85" />
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0" />
+    </radialGradient>
+    <filter id="shadow" x="28" y="22" width="200" height="214" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#0B1724" flood-opacity="0.22" />
+    </filter>
+  </defs>
+  <ellipse cx="128" cy="134" rx="74" ry="92" fill="#0B1724" fill-opacity="0.12" filter="url(#shadow)" />
+  <path d="M128 34C92 34 62 82 62 131C62 184 94 220 128 220C162 220 194 184 194 131C194 82 164 34 128 34Z" fill="url(#eggBody)" stroke="#E8FFE4" stroke-width="4" />
+  <path d="M92 72C80 88 76 108 76 128C76 130 76 132 76 134C83 114 95 95 111 82C118 76 125 72 132 70C118 66 102 66 92 72Z" fill="url(#eggHighlight)" />
+  <path d="M108 53C96 67 89 84 86 104" stroke="#FFFFFF" stroke-opacity="0.35" stroke-width="10" stroke-linecap="round" />
+</svg>

@@ -58,8 +58,19 @@ body {
   margin: 0 auto;
   padding: 0 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
+}
+
+.nav-links {
+  margin-left: auto;
+}
+
+.nav-actions {
+  margin-left: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .logo {
@@ -87,10 +98,20 @@ body {
 .theme-toggle {
   background: transparent;
   border: none;
-  color: var(--white);
+  color: var(--dark);
   font-size: 1.05rem;
   cursor: pointer;
-  margin-left: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  transition: var(--transition);
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.08);
 }
 
 /* (dark theme removed to keep single high-contrast palette) */
@@ -576,6 +597,7 @@ section {
 .feature-card .btn-lab:hover {
   color: var(--accent-hover);
   transform: translateX(5px);
+  cursor: pointer;
 }
 
 /* ===== PRODUCTS / PRICING SECTION ===== */
@@ -624,6 +646,16 @@ section {
   z-index: 1;
 }
 
+@media (min-width: 993px) {
+  .price-grid {
+    grid-template-columns: repeat(3, minmax(280px, 1fr));
+  }
+
+  .price-grid .price-card:last-child {
+    grid-column: 2;
+  }
+}
+
 .price-card {
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(10px);
@@ -634,6 +666,7 @@ section {
   transition: var(--transition);
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .price-card:hover {
@@ -664,8 +697,19 @@ section {
 }
 
 .price-icon {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
+  width: 84px;
+  height: 84px;
+  margin: 0 auto 15px;
+  display: grid;
+  place-items: center;
+}
+
+.price-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.18));
 }
 
 .price-card h3 {
@@ -785,8 +829,12 @@ section {
   gap: 15px;
 }
 
+.contact-item i .map {
+  width: 24px;
+  height: 24px;
+}
 .contact-item i {
-  width: 44px;
+  width: 45px;
   height: 44px;
   background: var(--accent);
   color: var(--white);
@@ -795,6 +843,7 @@ section {
   align-items: center;
   justify-content: center;
   font-size: 1.05rem;
+  padding: 20px;
 }
 
 .contact-item div h4 {
@@ -885,14 +934,10 @@ section {
 }
 
 .footer-logo {
-  width: 52px;
-  height: 52px;
+  width: 58px;
+  height: 58px;
   object-fit: contain;
   display: inline-block;
-  background: #ffffff;
-  padding: 6px;
-  border-radius: 8px;
-  box-shadow: 0 6px 18px rgba(3, 30, 12, 0.08);
 }
 
 /* Dark mode: override color variables when html has .dark */
@@ -929,6 +974,18 @@ html.dark body {
 html.dark .navbar {
   background: rgba(7, 17, 14, 0.6);
 }
+html.dark .logo {
+  color: var(--text);
+}
+html.dark .logo-img {
+  filter: brightness(1.08) contrast(1.12) drop-shadow(0 0 10px rgba(127, 207, 107, 0.28));
+}
+html.dark .theme-toggle {
+  color: var(--text);
+}
+html.dark .theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
 html.dark .nav-links a {
   color: var(--text);
 }
@@ -941,6 +998,10 @@ html.dark .footer {
   color: var(--text);
 }
 
+html.dark .products {
+  background: var(--secondary);
+}
+
 /* Improve price list contrast in dark mode */
 html.dark .products .price-card {
   background: var(--card-bg);
@@ -949,7 +1010,7 @@ html.dark .products .price-card {
 }
 html.dark .products .price-card:hover {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.025));
-  border-color: rgba(127, 207, 107, 0.22);
+  border-color: rgb(0, 255, 98);
 }
 html.dark .products .price-card .price-value {
   color: var(--price-highlight);
@@ -1061,6 +1122,21 @@ html.dark .products .price-card .price-value {
   }
 }
 
+/* Make product section heading and price values white in dark mode */
+html.dark .products .section-header h2,
+html.dark .products .section-header p,
+html.dark .products .section-header .price-card {
+  color: #ffffff;
+}
+
+html.dark .products .price-card .price-value {
+  color: #ffffff !important;
+}
+
+/* Variant title (card h3) white in dark mode */
+html.dark .products .price-card h3 {
+  color: #ffffff;
+}
 @media (max-width: 768px) {
   .nav-links {
     position: fixed;

@@ -137,23 +137,24 @@ if (heroStats) {
 document.getElementById("contactForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
-  const btn = this.querySelector('button[type="submit"]');
-  const originalText = btn.innerHTML;
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const message = document.getElementById("message").value.trim();
 
-  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
-  btn.disabled = true;
+  const waNumber = "085113080755";
+  const waMessage = [
+    "Halo, saya ingin memesan telur bebek.",
+    `Nama: ${name}`,
+    `Email: ${email}`,
+    phone ? `Telepon: ${phone}` : null,
+    `Pesan: ${message}`,
+  ]
+    .filter(Boolean)
+    .join("\n");
 
-  setTimeout(() => {
-    btn.innerHTML = '<i class="fas fa-check"></i> Pesan Terkirim!';
-    btn.style.background = "#28a745";
-
-    setTimeout(() => {
-      btn.innerHTML = originalText;
-      btn.style.background = "";
-      btn.disabled = false;
-      this.reset();
-    }, 2000);
-  }, 1500);
+  const waUrl = `https://wa.me/${waNumber.replace(/^0/, "62")}?text=${encodeURIComponent(waMessage)}`;
+  window.open(waUrl, "_blank", "noopener,noreferrer");
 });
 
 // ===== GALLERY LIGHTBOX (simple) =====
