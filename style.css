@@ -74,7 +74,7 @@ body {
 }
 
 .logo {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 800;
   color: var(--white);
   text-decoration: none;
@@ -991,12 +991,18 @@ html.dark .theme-toggle:hover {
 html.dark .nav-links a {
   color: var(--text);
 }
+html.dark .hamburger span {
+  background: var(--text);
+}
 html.dark .btn-outline {
   color: var(--text);
   border-color: rgba(255, 255, 255, 0.06);
 }
 html.dark .footer {
   background: #03110b;
+  color: var(--text);
+}
+html.dark .footer-links h4 {
   color: var(--text);
 }
 
