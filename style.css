@@ -444,6 +444,7 @@ section {
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
 }
 
 .about-image img {
@@ -534,6 +535,7 @@ section {
   border: 1px solid rgba(0, 0, 0, 0.05);
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .feature-card::before {
